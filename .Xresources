@@ -1,0 +1,42 @@
+URxvt.font: xft:Terminus:size:6
+URxvt.scrollBar:false
+URxvt*cursorBlink:true
+URxvt*cursorUnderline:0
+URxvt*rate: 99  99
+! special
+!*.foreground:   #ffffff
+*.cursorColor:  #fec7cd
+*.foreground : #ffffff
+urxvt*depth: 32
+urxvt*background: rgba:0000/0000/0200/c800
+*.color0:  #737a8a
+*.color8:   #636a7a
+
+*.color1:   #ef6b7b
+*.color9:   #e76373
+
+*.color2:   #a1d569
+*.color10:  #99cd61
+
+*.color3:   #f59335
+*.color11:  #ed8b2d
+
+*.color4:   #4ec2e8
+*.color12:  #46bae0
+
+*.color5:   #fec7cd
+*.color13:  #f6bfc5
+
+*.color6:   #95c1c0
+*.color14:  #8db9b8
+
+*.color7:   #dde1e8
+*.color15:  #d5d9e0
+
+!rofi color theme
+rofi.color-enabled: true
+rofi.color-window: #0039ff, #0039ff, #4F80FF
+rofi.color-normal: #0039ff, #a5a5ff, #0039ff, #4f80ff, #ffffff
+rofi.color-active: #0039ff, #68ba50, #0039ff, #4f80ff, #68ba50
+rofi.color-urgent: #0039ff, #ff7047, #0039ff, #4f80ff, #ff7047
+rofi.separator-style: dash
