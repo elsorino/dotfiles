@@ -130,7 +130,7 @@ bindsym $mod+Shift+9 move container to workspace $w9
 bindsym $mod+Shift+0 move container to workspace $w10
 
 #workspace assignments
-assign [class="palemoon"] $w1
+assign [class="firefox"] $w1
 assign [class="^discord$"] $w3
 assign [class="^Steam$"] $w4
 
@@ -187,8 +187,8 @@ bindsym XF86AudioRaiseVolume exec amixer -q set Master 2%+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q set Master 2%- unmute
 bindsym  --release Print exec scrot -s '%Y-%m-%d-$p.png' -e 'mv $f ~/Pictures'
 exec redshift -l 32.0:-81.0
-exec_always feh --bg-scale /home/elso/Downloads/death.jpg
-exec palemoon
+exec_always feh --bg-scale /home/elso/Downloads/yorhapaper.jpg
+exec firefox
 exec Discord
 exec compton
 for_window [class="^Steam$" title="^Friends$"] floating enable
