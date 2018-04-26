@@ -186,8 +186,9 @@ bindsym $mod+d exec rofi -show run -font "hack 10"
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2%+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q set Master 2%- unmute
 bindsym  --release Print exec scrot -s '%Y-%m-%d-$p.png' -e 'mv $f ~/Pictures'
+bindsym  --release $mod+Print exec scrot '%Y-%m-%d-$p.png' -e 'mv $f ~/Pictures'
 exec redshift -l 32.0:-81.0
-exec_always feh --bg-scale /home/elso/Downloads/yorhapaper.jpg
+exec_always feh --bg-scale /home/elso/yorhapaper.jpg
 exec firefox
 exec Discord
 exec compton
