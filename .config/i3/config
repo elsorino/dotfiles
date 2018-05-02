@@ -189,9 +189,11 @@ bindsym  --release Print exec scrot -s '%Y-%m-%d-$p.png' -e 'mv $f ~/Pictures'
 bindsym  --release $mod+Print exec scrot '%Y-%m-%d-$p.png' -e 'mv $f ~/Pictures'
 exec redshift -l 32.0:-81.0
 exec_always feh --bg-scale /home/elso/yorhapaper.jpg
-exec firefox
+exec apulse firefox
 exec Discord
+exec urxvt -u 
 exec compton
+exec --no-startup-id i3-msg 'workspace 2; exec urxvt -e /home/elso/tmux.sh'
 for_window [class="^Steam$" title="^Friends$"] floating enable
 for_window [class="^Steam$" title="Steam - News"] floating enable
 for_window [class="^Steam$" title=".* - Chat"] floating enable
