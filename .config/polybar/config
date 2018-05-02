@@ -179,6 +179,7 @@ label-focused-padding = 2
 label-unfocused = ○
 label-unfocused-padding = 2
 
+label-urgent = ●
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
