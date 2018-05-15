@@ -81,7 +81,7 @@ scroll-up = bspwm-desknext
 ;   left
 ;   center
 ;   right
-tray-position = 
+tray-position = right 
 
 ; If true, the bar will not shift its
 
