@@ -1,1 +1,1 @@
-Wallpaper: https://imgur.com/a/2Y8dd 
+MOVED TO https://gitlab.com/elsorino/dotfiles
