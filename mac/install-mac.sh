@@ -11,11 +11,12 @@ fi
 brew install neofetch tmux cmake autoconf bash qt micro 
 
 #Installs some programs I use with cask
-brew cask install discord eloston-chromium mpv protonvpn spotify steam typora vscodium
+brew cask install discord mpv protonvpn spotify steam typora
 
-#This is needed to install iterm2-nightly
+#Taps some casks and installs more stuff
 brew tap homebrew/cask-versions
-brew cask install iterm2-nightly
+brew tap elsorino/homebrew-elso
+brew cask install iterm2-nightly icecat macfeh
 
 #Copies the scripts to home directory
-cp {mountefi.sh,tmux.sh,.tmux.conf,.bash_profile} ~/
+cp {mountefi.sh,makedmg.sh,.bash_profile} ~/
