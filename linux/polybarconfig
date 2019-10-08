@@ -30,8 +30,8 @@ margin-top = 0
 margin-bottom = 0
 
 [bar/main]
-;monitor = ${env:MONITOR:HDMI-1}
-bottom = true
+monitor = ${env:MONITOR:}
+bottom = false
 width = 100%
 height = 25
 offset-x = 0
@@ -51,10 +51,7 @@ padding-left = 0
 padding-right = 2
 module-margin-left = 0
 module-margin-right = 0
-font-0 = Liberation Sans:size=12;3
-font-1 = Fontawesome:size=12;3.0
-font-2 = Font Awesome 5 Free:size=12;1.5
-
+font-0 = Hack Nerd Font:size=12;3
 
 modules-left = i3 xwindow
 modules-center = date
@@ -158,16 +155,16 @@ type = internal/i3
 format = <label-state> <label-mode>
 index-sort = true
 
-ws-icon-0 = "1;"
-ws-icon-1 = "2;"
-ws-icon-2 = "3;"
-ws-icon-3 = "4;"
-ws-icon-4 = "5;5"
-ws-icon-5 = "6;6"
-ws-icon-6 = "7;7"
-ws-icon-7 = "8;8"
-ws-icon-8 = "9;9"
-ws-icon-9 = "10;10"
+ws-icon-0 = "1; "
+ws-icon-1 = "2; "
+ws-icon-2 = "3; "
+ws-icon-3 = "4; "
+ws-icon-4 = "5; "
+ws-icon-5 = "6; "
+ws-icon-6 = "7; "
+ws-icon-7 = "8; "
+ws-icon-8 = "9; "
+ws-icon-9 = "10; "
 
 label-mode = %mode%
 label-mode-padding = 2

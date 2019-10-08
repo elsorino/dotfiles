@@ -9,8 +9,8 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-set $terminal urxvt
-set $mod Mod4
+set $terminal termite
+set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -94,6 +94,7 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+
 set $w1 1
 set $w2 2
 set $w3 3
@@ -133,6 +134,9 @@ bindsym $mod+Shift+0 move container to workspace $w10
 assign [class="firefox"] $w1
 assign [class="^discord$"] $w3
 assign [class="^Steam$"] $w4
+
+bindsym $mod+minus move scratchpad
+bindsym $mod+c [class="^keepassxc$"] scratchpad show
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -187,13 +191,8 @@ bindsym XF86AudioRaiseVolume exec amixer -q set Master 2%+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q set Master 2%- unmute
 bindsym  --release Print exec scrot -s '%Y-%m-%d-$p.png' -e 'mv $f ~/Pictures'
 bindsym  --release $mod+Print exec scrot '%Y-%m-%d-$p.png' -e 'mv $f ~/Pictures'
-exec redshift -l 32.0:-81.0
+exec redshift -l 32.0:-81.0d
 exec_always feh --bg-scale /home/elso/yorhapaper.jpg
-exec apulse firefox
-exec Discord
-exec urxvt -u 
-exec compton
-exec --no-startup-id i3-msg 'workspace 2; exec urxvt -e /home/elso/tmux.sh'
 for_window [class="^Steam$" title="^Friends$"] floating enable
 for_window [class="^Steam$" title="Steam - News"] floating enable
 for_window [class="^Steam$" title=".* - Chat"] floating enable
