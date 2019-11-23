@@ -1,0 +1,13 @@
+[user]
+	name = elsorino
+	email = elso@pm.me
+[core]
+	excludesfile = ~/.gitignore_global
+	autocrlf = input
+# Always use SSH
+[url "ssh://git@github.com/"]
+  insteadOf = https://github.com/
+[url "ssh://git@gitlab.com/"]
+  insteadOf = https://gitlab.com/
+[url "ssh://git@bitbucket.org/"]
+  insteadOf = https://bitbucket.org/
