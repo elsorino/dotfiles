@@ -4,4 +4,3 @@
 [core]
 	excludesfile = ~/.gitignore_global
 	autocrlf = input
-# Always use SSH
