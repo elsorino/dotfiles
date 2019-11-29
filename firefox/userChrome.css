@@ -1,0 +1,33 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace html url("http://www.w3.org/1999/xhtml");
+
+/* Hides area left of tabs */
+.titlebar-buttonbox-container{
+	display: none
+}
+.titlebar-spacer{
+    display: none !important;
+}
+
+toolbarspring { -moz-box-flex: unset !important;}
+
+/* Remove back button circle */
+#back-button:not(:hover),
+#back-button:not(:hover) > .toolbarbutton-icon {
+background: transparent !important;
+border: none !important;
+box-shadow: none !important;
+}
+
+#back-button:hover,
+#back-button:hover > .toolbarbutton-icon {
+border: none !important;
+border-radius: 2px !important;
+}  
+
+#back-button {
+	fill-opacity: 1 !important;
+	padding-top: 0px !important;
+	padding-bottom: 0px !important;
+}
+.toolbarbutton-1 { opacity: 1 !important;}
