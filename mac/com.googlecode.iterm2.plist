@@ -1247,12 +1247,12 @@
 		<key>screenFrame</key>
 		<string>{{-1920, 0}, {1920, 1080}}</string>
 		<key>topLeft</key>
-		<string>{-1112, 803}</string>
+		<string>{-1084, 790}</string>
 	</dict>
 	<key>NoSyncInstallationId</key>
 	<string>F734B336-C21A-4D45-BAC0-542A54DDA9ED</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>14</integer>
+	<integer>15</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -2025,7 +2025,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-11-21T12:02:46Z</date>
+	<date>2019-11-23T07:13:12Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SUUpdateRelaunchingMarker</key>
@@ -2056,6 +2056,8 @@
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
 	<false/>
+	<key>metalMaximizeThroughput</key>
+	<true/>
 	<key>preferIntegratedGPU</key>
 	<false/>
 </dict>
