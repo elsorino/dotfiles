@@ -9,4 +9,4 @@ ln -s $PWD/ranger.conf ~/.config/ranger/rc.conf
 ln -s $PWD/Xresources ~/.Xresources
 ln -s $PWD/xinit ~/.xinitrc
 ln -s $PWD/zshrc ~/.zshrc
-git clone https://github.com/sindresorhus/pure ~/.zsh
+git clone https://github.com/sindresorhus/pure ~/.zsh/pures

@@ -1,4 +1,4 @@
-URxvt.font: xft:Hack:size=10:antialias=true
+URxvt.font: xft:Hack Nerd Font:size=10:antialias=true
 URxvt.scrollBar:false
 URxvt*cursorBlink:true
 URxvt*cursorUnderline:0
@@ -27,9 +27,17 @@ URxvt*rate: 99  99
 *.color15:    #E6E6E6
 
 !rofi color theme
+
+! Enable the extended coloring options
 rofi.color-enabled: true
-rofi.color-window: #d5d0ba, #45403a, #d9c6b5
-rofi.color-normal: #d5d0ba, #45403a, #d5d0ba, #45403a, #d9c6b5
-rofi.color-active: #0039ff, #68ba50, #0039ff, #45403a, #45403a
-rofi.color-urgent: #0039ff, #ff7047, #0039ff, #45403a, #45403a
-rofi.separator-style: dash
+
+! Property Name     BG       Border   Separator
+rofi.color-window:  #3a3c4e, #3a3c4e, #282936
+
+! Property Name     BG       FG       BG-alt   Head-BG  Head-FG
+rofi.color-normal:  #3a3c4e, #e9e9f4, #3a3c4e, #3a3c4e, #f7f7fb
+rofi.color-active:  #3a3c4e, #FF0000, #3a3c4e, #3a3c4e, #62d6e8
+rofi.color-urgent:  #3a3c4e, #FF0000, #3a3c4e, #3a3c4e, #ea51b2
+
+! Set the desired separator style
+rofi.separator-style: solid

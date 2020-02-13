@@ -8,67 +8,54 @@
 ;=====================================================
 
 [colors]
-background = #d5d0ba
-background-alt = #1a1626
-foreground = #45403a
-foreground-alt = #494949
-foreground-dim = #494949
-primary = #ffb52a
-secondary = #e60053
-alert = #ff6600
-black      = #000000
-white	   = #ffffff
-red        = #cd3076 
-blue       = #4da7dc
-grey       = #32363c
-green      = #17e53e
-high = #4da7dc
-high-alt = #0c2b41
+background = #282A36
+foreground = #F8F8F2
+gray 	   = #44457a
+alert      = #ff5555
+red        = #ff5555 
+blue       = #8be9fd
+green      = #50fa7b
+cyan       = #8be9fd
 
 [global/wm]
 margin-top = 0
 margin-bottom = 0
 
 [bar/main]
-monitor = ${env:MONITOR:}
+monitor = ${env:MONITOR:HDMI}
 bottom = false
 width = 100%
 height = 25
-offset-x = 0
-offset-y = 0
+;offset-x = 0
+;offset-y = 5
 
-;background = ${xrdb:color9}
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-overline-size = 0
-overline-color = #f00
+overline-size = 2
+overline-color = #000000
 underline-size = 1
 underline-color = #aaaaaa
 
-spacing = 0
+spacing = 1
 padding-left = 0
-padding-right = 2
+padding-right = 1
 module-margin-left = 0
-module-margin-right = 0
-font-0 = Hack Nerd Font:size=12;3
+module-margin-right = 1
+font-0 = Source Code Pro:size=12;3
+font-1 = Font Awesome 5 Free:pixelsize=12;2
+font-2 = Font Awesome 5 Free Solid:pixelsize=12;2
+font-3 = Font Awesome 5 Brands:pixelsize=12;2
 
 modules-left = i3 xwindow
 modules-center = date
-modules-right = volume 
-systemRoot systemHome s
+modules-right = spotify volume wlan
 
-;wm-restack = bspwm
 wm-restack = i3
 
-;override-redirect = true
 
-scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
-
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
-
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
 
 ; Position of the system tray window
 ; If empty or undefined, tray support will be disabled
@@ -78,7 +65,7 @@ scroll-up = bspwm-desknext
 ;   left
 ;   center
 ;   right
-tray-position = right 
+tray-position = 
 
 ; If true, the bar will not shift its
 
@@ -114,99 +101,57 @@ type = internal/xwindow
 label = %title:0:30:...%
 label-background = ${colors.background}
 label-padding = 2
-format-underline = ${colors.blue}
-
-[module/xkeyboard]
-type = internal/xkeyboard
-blacklist-0 = num lock
-
-format-underline = ${colors.secondary}
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-
-label-layout = %layout%
-
-label-indicator-padding = 2
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
-
-[module/bspwm]
-type = internal/bspwm
-ws-icon-default = x
-
-label-focused = %index%
-label-focused-background = ${colors.background}
-label-focused-underline= ${colors.primary}
-label-focused-padding = 2
-
-label-occupied = %index%
-label-occupied-padding = 2
-
-label-urgent = %index%
-label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
-
-label-empty = %index%
-label-empty-foreground = ${colors.foreground-alt}
-label-empty-padding = 2
+;format-underline = ${colors.blue}
 
 [module/i3]
 type = internal/i3
 format = <label-state> <label-mode>
+format-spacing = 0
 index-sort = true
+pin-workspaces = true
 
-ws-icon-0 = "1; "
-ws-icon-1 = "2; "
-ws-icon-2 = "3; "
-ws-icon-3 = "4; "
-ws-icon-4 = "5; "
-ws-icon-5 = "6; "
-ws-icon-6 = "7; "
-ws-icon-7 = "8; "
-ws-icon-8 = "9; "
-ws-icon-9 = "10; "
-
-label-mode = %mode%
-label-mode-padding = 2
-
-label-focused = ●
-label-focused-underline = #ffffff
 label-focused-padding = 2
+label-focused-margin = 0
+label-focused-font = 3
+label-focused-background = ${colors.cyan}
+label-focused-foreground = ${colors.background}
 
-label-unfocused = ○
 label-unfocused-padding = 2
+label-unfocused-margin = 0
+label-unfocused-font = 3
 
-label-urgent = ●
-label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
+label-urgent-margin = 0
+label-urgent-font = 3
 
-label-visible-foreground = ${module/bspwm.label-empty-padding}
-label-visible-padding = ${module/bspwm.label-empty-padding}
+label-visible-padding = 2
+label-visible-margin = 0
+label-visible-font = 3
 
 [module/theme]
-format-background = ${colors.background}
-format-padding = 2
-format-foreground = ${self.format-underline}
+;format-background = ${colors.background}
+;format-padding = 0
+;format-foreground = ${self.format-underline}
 
-format-connected-background = ${module/theme.format-background}
-format-unconnected-background = ${module/theme.format-background}
-format-mounted-background = ${module/theme.format-background}
-format-unmounted-background = ${module/theme.format-background}
-format-charging-background = ${module/theme.format-background}
-format-discharging-background = ${module/theme.format-background}
+;format-connected-background = ${module/theme.format-background}
+;format-unconnected-background = ${module/theme.format-background}
+;format-mounted-background = ${module/theme.format-background}
+;format-unmounted-background = ${module/theme.format-background}
+;format-charging-background = ${module/theme.format-background}
+;format-discharging-background = ${module/theme.format-background}
 
-format-connected-padding = ${module/theme.format-padding}
-format-unconnected-padding = ${module/theme.format-padding}
-format-mounted-padding = ${module/theme.format-padding}
-format-unmounted-padding = ${module/theme.format-padding}
-format-charging-padding = ${module/theme.format-padding}
-format-discharging-padding = ${module/theme.format-padding}
+;format-connected-padding = ${module/theme.format-padding}
+;format-unconnected-padding = ${module/theme.format-padding}
+;format-mounted-padding = ${module/theme.format-padding}
+;format-unmounted-padding = ${module/theme.format-padding}
+;format-charging-padding = ${module/theme.format-padding}
+;format-discharging-padding = ${module/theme.format-padding}
 
-format-mounted-foreground = ${self.format-mounted-underline}
-format-unmounted-foreground = ${self.format-unmounted-underline}
+;format-mounted-foreground = ${self.format-mounted-underline}
+;format-unmounted-foreground = ${self.format-unmounted-underline}
 
 [module/systemRoot]
-inherit = module/theme
+;inherit = module/theme
 type = internal/fs
 interval = 20
 mount-0 = /
@@ -216,7 +161,7 @@ format-mounted-underline = #55a049
 format-unmounted-underline =
 
 [module/cpu]
-inherit = module/theme
+;inherit = module/theme
 type = internal/cpu
 interval = 2
 format-prefix = " "
@@ -224,37 +169,30 @@ label = %percentage%%
 format-underline = #FF7777
 
 [module/memory]
-inherit = module/theme
+;inherit = module/theme
 type = internal/memory
 interval = 2
 format-prefix = " "
 label = %percentage_used%%
 format-underline = #999999
 [module/wlan]
-inherit = module/theme
+;inherit = module/theme
 type = internal/network
-interface = wlo1
+interface = wlan0
 interval = 1
 
-format-connected = <label-connected>
-format-connected-underline = #268bd2
-format-disconnected-underline = ${colors.alert}
+format-connected = <label-connected> 
+format-disconnected-underline = ${colors.red}
 
 ;label-connected = " %local_ip% %signal% %downspeed% %upspeed%"
-label-connected = " %signal% [  %downspeed% ] [  %upspeed% ]"
+label-connected = " "
 label-disconnected = "OFFLINE"
-label-connected-foreground = ${colors.high}
-label-disconnected-foreground = ${colors.alert}
+;label-connected-foreground = ${colors.green}
+label-disconnected-foreground = ${colors.red}
 
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
-inherit = module/theme
+;inherit = module/theme
 type = internal/network
 interface = eth0
 interval = 3.0
@@ -269,11 +207,11 @@ label-disconnected = %ifname% disconnected
 label-disconnected-foreground = ${colors.foreground-alt}
 
 [module/date]
-inherit = module/theme
+;inherit = module/theme
 type = internal/date
 interval = 1
 
-time = "%b %d - %H:%M:%S "
+time = "%b %d - %H:%M"
 time-alt = "%a - %d.%m.%Y - %I:%M %p"
 
 format-prefix = 
@@ -286,31 +224,21 @@ interval = 10
 exec = ~/.config/polybar/redshift.sh
 
 [module/volume]
-inherit = module/theme
-type = internal/volume
-format-volume = <label-volume> <bar-volume>
-format-muted-prefix = " "
-format-muted-foreground = #f3f4f5
-label-muted = sound muted
-bar-volume-width = 10
-bar-volume-foreground-0 = ${colors.blue}
-bar-volume-foreground-1 = ${colors.blue}
-bar-volume-foreground-2 = ${colors.blue}
-bar-volume-foreground-3 = ${colors.blue}
-bar-volume-foreground-4 = ${colors.blue}
-bar-volume-foreground-5 = ${colors.red}
-bar-volume-foreground-6 = ${colors.red}
-bar-volume-gradient = false
-bar-volume-indicator = │
-bar-volume-indicator-font = 2
-bar-volume-indicator-foreground = #ff
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = #ffffff
+type = internal/pulseaudio
 
+format-volume = <ramp-volume><label-volume>
+format-muted = <label-muted>
+label-volume = %percentage%
+label-muted =   muted
+label-muted-foreground = #aaa
+format-volume-padding = 0
+format-muted-padding = 0
 
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-headphones-0 = 
+format-underline = ${colors.red}
 
 [module/ewmh]
 type = internal/xworkspaces
@@ -384,3 +312,11 @@ label-urgent-underline = 4
 ; Default: %icon%  %name%
 label-empty = %icon%
 label-empty-foreground = #55
+
+[module/spotify]
+type = custom/script
+interval = 1
+format-prefix = " "
+format = <label>
+exec = python /home/elso/bin/spotify_status.py -f '{artist}: {song}'
+format-underline = ${colors.green}
