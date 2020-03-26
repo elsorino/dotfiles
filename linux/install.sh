@@ -8,5 +8,4 @@ ln -s $PWD/i3config ~/.config/i3/config
 ln -s $PWD/ranger.conf ~/.config/ranger/rc.conf
 ln -s $PWD/Xresources ~/.Xresources
 ln -s $PWD/xinit ~/.xinitrc
-ln -s $PWD/zshrc ~/.zshrc
-git clone https://github.com/sindresorhus/pure ~/.zsh/pures
+ln -s $PWD/bashrc ~/.bashrc

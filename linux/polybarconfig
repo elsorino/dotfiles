@@ -22,8 +22,8 @@ margin-top = 0
 margin-bottom = 0
 
 [bar/main]
-monitor = ${env:MONITOR:HDMI}
-bottom = false
+monitor = HDMI-2
+bottom = true
 width = 100%
 height = 25
 ;offset-x = 0
@@ -42,14 +42,14 @@ padding-left = 0
 padding-right = 1
 module-margin-left = 0
 module-margin-right = 1
-font-0 = Source Code Pro:size=12;3
+font-0 = SF Mono:size=11;3
 font-1 = Font Awesome 5 Free:pixelsize=12;2
 font-2 = Font Awesome 5 Free Solid:pixelsize=12;2
 font-3 = Font Awesome 5 Brands:pixelsize=12;2
 
 modules-left = i3 xwindow
 modules-center = date
-modules-right = spotify volume wlan
+modules-right = volume wlan
 
 wm-restack = i3
 
@@ -65,7 +65,7 @@ scroll-down = i3wm-wsprev
 ;   left
 ;   center
 ;   right
-tray-position = 
+;tray-position = right
 
 ; If true, the bar will not shift its
 
@@ -78,7 +78,7 @@ tray-maxsize = 16
 ; Enable pseudo transparency
 ; Will automatically be enabled if a fully transparent
 ; background color is defined using `tray-background`
-tray-transparent = false
+;tray-transparent = true
 
 ; Background color for the tray container
 ; By default the tray container will use the bar
@@ -95,6 +95,12 @@ tray-padding = 0
 
 ; Scale factor for tray clients
 tray-scale = 1.0
+
+[bar/monitor1]
+
+inherit = bar/main
+monitor = HDMI-1
+tray-position = right
 
 [module/xwindow]
 type = internal/xwindow
