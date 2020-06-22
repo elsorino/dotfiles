@@ -26,11 +26,12 @@ for_window [class="^.*"] border pixel 2
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-set $bg-color 	         #2f343f
-set $inactive-bg-color   #2f343f
-set $text-color          #f3f4f5
-set $inactive-text-color #676E7D
-set $urgent-bg-color     #44457a
-set $preview-color		 $44457a
+#set $inactive-bg-color   #2f343f
+#set $text-color          #f3f4f5
+#set $inactive-text-color #676E7D
+#set $urgent-bg-color     #44457a
+#set $preview-color		 $8be9fd
+
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, its unicode glyph coverage is limited, the old
 # X core fonts rendering does not support right-to-left and this being a bitmap
@@ -91,7 +92,7 @@ bindsym $mod+a focus parent
 
 
 set $w1 
-set $w2 
+set $w2 
 set $w3 
 set $w4 
 set $w5 5
@@ -140,7 +141,6 @@ bindsym $mod+Shift+9 move container to workspace $w9
 bindsym $mod+Shift+0 move container to workspace $w10
 
 #workspace assignments
-assign [class="^chromium$"] $w2
 assign [class="^brave-browser$"] $w2
 assign [class="^discord$"] $w3
 assign [class="^Steam*"] $w4
@@ -183,38 +183,23 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 
-set $bg-color 	         #8be9fd
-set $inactive-bg-color   #44457a
-set $text-color          #f8f8f2
-set $inactive-text-color #f8f8f2
-set $urgent-bg-color     #ff5555
+#set $bg-color 	         #8be9fd
+#set $inactive-bg-color   #44457a
+#set $text-color          #f8f8f2
+#set $inactive-text-color #f8f8f2
+#set $urgent-bg-color     #ff5555
 
 
 # window colors
 #                       border              background         text                 indicator
-client.focused          $bg-color           $bg-color          $text-color          $preview-color
-client.unfocused        $inactive-bg-color  $inactive-bg-color $text-color          $preview-color
-client.focused_inactive $inactive-bg-color  $inactive-bg-color $text-color          $preview-color
-client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $preview-color
+client.focused          $bg-color           $bg-color          $text-color          $bg-color
+client.unfocused        $bg-color		    $inactive-bg-color $text-color          $bg-color
+client.focused_inactive $inactive-bg-color  $inactive-bg-color $text-color          $bg-color
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $bg-color
 
 hide_edge_borders both
+for_window [class="^.*"] border pixel 0
 
-#bar {
-#	tray_output none
-#	font pango: Sauce Code Pro Nerd Font 12
-#  	status_command SCRIPT_DIR=~/blocklets i3blocks -c /home/elso/.config/i3blocks/i3blocks.conf
-#	colors {
-#		background $bg-color
-#	    	separator #757575
-#		#                  border             background         text
-#		focused_workspace  $bg-color          $bg-color          $text-color
-#		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-#		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-#	}
-#}
-
-bindsym $mod+d exec rofi -show run -font "Hack Nerd Font 10" -theme dracula
-bindsym $mod+f9 exec exodus
 
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/bin/pavolume +2% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id ~/bin/pavolume -2% #decrease sound volume
@@ -225,16 +210,16 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 bindsym --release Print exec "maim -s /home/elso/Pictures/$(date +%F-%s).png; xclip -selection clipboard -t image/png < /home/elso/Pictures/$(date +%F-%s).png"
+bindsym $mod+d exec rofi -show run
 
-#exec redshift -l 32.0:-81.0d
 exec_always feh --bg-scale /home/elso/wallpaper.png
-exec_always --no-startup-id picom --config ~/.config/picom/picom.conf
+exec --no-startup-id picom --config ~/.config/picom/picom.conf
 exec --no-startup-id dunst
-exec_always --no-startup-id /home/elso/.config/polybar/launch.sh
-#exec discord
+exec --no-startup-id /home/elso/.config/polybar/launch.sh
+exec discord
 exec steam
 exec mullvad-vpn
-exec brave-nightly
+exec firefox
 
 for_window [class="^Steam*"] floating enable
 
