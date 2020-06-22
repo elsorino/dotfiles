@@ -9,3 +9,6 @@ ln -s $PWD/picom.conf ~/.config/picom/picom.conf
 ln -s $PWD/dunstrc ~/.config/dunst/dunstrc
 ln -s $PWD/microsettings.json ~/.config/micro/settings.json
 ln -s $PWD/bashrc ~/.bashrc
+
+mkdir ~/bin
+ln -s $PWD/pavolume ~/bin/pavolume
