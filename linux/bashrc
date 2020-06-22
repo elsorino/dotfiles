@@ -135,15 +135,11 @@ PATH='/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
 
 
 export PATH="/home/elso/.local/bin:$PATH"	
-export GNUPGHOME=~/.gnupg/trezor
 export PATH="/home/elso/go/bin:$PATH"
+export VITASDK=/usr/local/vitasdk # define $VITASDK 
+export PATH=$VITASDK/bin:$PATH # add vitasdk tool to $PATH 
 export EDITOR='micro'
-#Some aliases
-alias +x="chmod +x"
-alias x+="chmod +x"
-alias pi="trezor-agent -c pi@192.168.0.133:1369"
+export QT_QPA_PLATFORMTHEME=gtk2 #Consistent look between GTK and Qt
+
 # Enable aliases to be sudo’ed
 alias sudo="sudo "
-# Avoid stupidity
-alias rm="rm -i"
-alias ls='ls --color=auto'
