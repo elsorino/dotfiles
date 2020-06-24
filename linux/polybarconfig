@@ -8,7 +8,7 @@
 ;=====================================================
 
 [colors]
-background = #000000
+background = #BB000000
 foreground = #F8F8F2
 gray 	   = #44457a
 alert      = #ff5555
@@ -41,8 +41,8 @@ font-2 = Font Awesome 5 Free Solid:pixelsize=12;2
 font-3 = Font Awesome 5 Brands:pixelsize=12;2
 
 modules-left = i3 xwindow
-modules-center = 
-modules-right = date volume wlan
+modules-center = spotify
+modules-right =  volume wlan date
 
 wm-restack = i3
 scroll-up = i3wm-wsnext
@@ -110,7 +110,7 @@ label-focused-padding = 2
 label-focused-margin = 0
 label-focused-font = 3
 label-focused-background = ${colors.cyan}
-label-focused-foreground = ${colors.background}
+label-focused-foreground = #000000
 
 label-unfocused-padding = 2
 label-unfocused-margin = 0
@@ -149,18 +149,14 @@ label = %percentage_used%%
 format-underline = #999999
 
 [module/wlan]
-;inherit = module/theme
 type = internal/network
 interface = wlan0
-interval = 1
+interval = 3
 
 format-connected = <label-connected> 
-format-disconnected-underline = ${colors.red}
 
-;label-connected = " %local_ip% %signal% %downspeed% %upspeed%"
-label-connected = " "
+label-connected = ""
 label-disconnected = "OFFLINE"
-;label-connected-foreground = ${colors.green}
 label-disconnected-foreground = ${colors.red}
 
 [module/date]
@@ -169,7 +165,6 @@ interval = 1
 
 time = "%A %B %d - %H:%M"
 label =  %time%
-label-padding = 1
 
 [module/volume]
 type = internal/pulseaudio
@@ -190,7 +185,7 @@ format-underline = ${colors.red}
 
 [module/spotify]
 type = custom/script
-interval = 3
+interval = 1
 ;format-prefix = " "
 format = <label>
-exec = python /home/elso/bin/spotify_status.py -f '{song}'
+exec = python /home/elso/bin/spotify_status.py -f '{artist} - {song}'
