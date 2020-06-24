@@ -212,7 +212,7 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym --release Print exec "maim -s /home/elso/Pictures/$(date +%F-%s).png; xclip -selection clipboard -t image/png < /home/elso/Pictures/$(date +%F-%s).png"
 bindsym $mod+d exec rofi -show run
 
-exec_always feh --bg-scale /home/elso/wallpaper.png
+exec_always feh --bg-scale /home/elso/Downloads/wallpaper-bright.jpg
 exec --no-startup-id picom --config ~/.config/picom/picom.conf
 exec --no-startup-id dunst
 exec --no-startup-id /home/elso/.config/polybar/launch.sh
