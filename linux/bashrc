@@ -32,6 +32,7 @@
     sexy_bash_prompt_dir_color="$sexy_bash_prompt_bold$(tput setaf 6)" # BOLD CYAN
     sexy_bash_prompt_git_status_color="$(tput setaf 8)" # Grey
     sexy_bash_prompt_git_progress_color="$sexy_bash_prompt_bold$(tput setaf 1)" # BOLD RED
+    sexy_bash_prompt_symbol_color="$sexy_bash_prompt_bold" # BOLD
 
 # Apply any color overrides that have been set in the environment
 if [[ -n "$PROMPT_USER_COLOR" ]]; then sexy_bash_prompt_user_color="$PROMPT_USER_COLOR"; fi
@@ -228,12 +229,12 @@ sexy_bash_prompt_get_git_info () {
 
 # Show the prompt
 PS1="\[$sexy_bash_prompt_reset\]\
-\[$sexy_bash_prompt_user_color\]❯ \
 \[$sexy_bash_prompt_dir_color\]\w\[$sexy_bash_prompt_reset\]\
 \$( sexy_bash_prompt_is_on_git && \
   echo -n \"\[$sexy_bash_prompt_git_status_color\] \$(sexy_bash_prompt_get_git_info)\" && \
   echo -n \"\[$sexy_bash_prompt_git_progress_color\]\$(sexy_bash_prompt_get_git_progress)\" && \
   echo -n \"\[$sexy_bash_prompt_reset\]\")\
+\[$sexy_bash_prompt_user_color\] ❯\
 \[$sexy_bash_prompt_symbol_color\] \[$sexy_bash_prompt_reset\]"
 
 # Set history length
@@ -252,6 +253,9 @@ shopt -s cmdhist
 shopt -s no_empty_cmd_completion
 # Avoid duplicates
 HISTCONTROL=ignoredups:erasedups
+# After each command, append to the history file and reread it
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
+
 
 # Construct $PATH
 function _prepend_path() {
@@ -260,6 +264,7 @@ function _prepend_path() {
 	fi
 }
 
+#I should really make these path commands more consistent
 PATH='/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
 [ -d /usr/local/bin ] && _prepend_path "/usr/local/bin"
 [ -d /usr/local/heroku/bin ] && _prepend_path "/usr/local/heroku/bin"
@@ -268,12 +273,10 @@ PATH='/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
 [ -d ~/bin ] && _prepend_path "$HOME/bin"
 [ -d ~/go/bin ] && _prepend_path "$HOME/go/bin"
 [ -d ~/.local/bin ] && _prepend_path "$HOME/.local/bin"
-
-
+export PATH=/usr/lib/hyper/resources/bin:$PATH
 export PATH="/home/elso/.local/bin:$PATH"	
 export PATH="/home/elso/go/bin:$PATH"
-export VITASDK=/usr/local/vitasdk # define $VITASDK 
-export PATH=$VITASDK/bin:$PATH # add vitasdk tool to $PATH 
+
 export EDITOR='micro'
 export QT_QPA_PLATFORMTHEME=gtk2 #Consistent look between GTK and Qt
 
@@ -281,6 +284,6 @@ export QT_QPA_PLATFORMTHEME=gtk2 #Consistent look between GTK and Qt
 alias sudo="sudo "
 alias juser="journalctl --user-unit"
 alias ls="exa --icons"
-
-# After each command, append to the history file and reread it
-PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
+alias vpn="mullvad connect"
+alias vpnd="mullvad disconnect"
+alias yayu="yay --devel -Syuu"

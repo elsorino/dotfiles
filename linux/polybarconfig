@@ -18,8 +18,8 @@ green      = #50fa7b
 cyan       = #8be9fd
 
 [global/wm]
-margin-top = 0
-margin-bottom = 0
+margin-top = 5
+margin-bottom = 5
 
 [bar/main]
 monitor = HDMI-2
@@ -35,6 +35,14 @@ padding-left = 0
 padding-right = 1
 module-margin-left = 0
 module-margin-right = 1
+fixed-center = true
+radius = 12
+
+border-left-size = 5
+border-right-size = 5
+border-top-size = 5
+border-bottom-size = 0
+
 font-0 = SF Mono:size=11;3
 font-1 = Font Awesome 5 Free:pixelsize=12;2
 font-2 = Font Awesome 5 Free Solid:pixelsize=12;2
@@ -48,20 +56,10 @@ wm-restack = i3
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
 
-; Position of the system tray window
-; If empty or undefined, tray support will be disabled
-; NOTE: A center aligned tray will cover center aligned modules
-;
-; Available positions:
-;   left
-;   center
-;   right
-;tray-position = right
-
 ; If true, the bar will not shift its
 
 ; contents when the tray changes
-tray-detached = false
+tray-detached = true
 
 ; Tray icon max size
 tray-maxsize = 16
@@ -75,7 +73,7 @@ tray-maxsize = 16
 ; By default the tray container will use the bar
 ; background color.
 ; Note: 32 bit alpha blending is not supported.
-tray-background = ${root.background}
+tray-background = #BB000000
 
 ; Tray offset defined as pixel value (e.g. 35) or percentage (e.g. 50%)
 tray-offset-x = 0
@@ -85,13 +83,15 @@ tray-offset-y = 0
 tray-padding = 0
 
 ; Scale factor for tray clients
-tray-scale = 1.0
+tray-scale = 1
 
-;If this isn't used, the tray will randomly switch between monitors
+;The tray is rather tedious to use on a rounded bar, i'd rather disable it
 [bar/monitor1]
 inherit = bar/main
 monitor = HDMI-1
-tray-position = right
+;tray-position = center
+;tray-offset-x = 914
+;padding-right = 8.5
 
 [module/xwindow]
 type = internal/xwindow
@@ -105,21 +105,17 @@ format = <label-state> <label-mode>
 format-spacing = 0
 index-sort = true
 pin-workspaces = true
-
 label-focused-padding = 2
 label-focused-margin = 0
 label-focused-font = 3
 label-focused-background = ${colors.cyan}
 label-focused-foreground = #000000
-
 label-unfocused-padding = 2
 label-unfocused-margin = 0
 label-unfocused-font = 3
-
 label-urgent-padding = 2
 label-urgent-margin = 0
 label-urgent-font = 3
-
 label-visible-padding = 2
 label-visible-margin = 0
 label-visible-font = 3
@@ -152,9 +148,7 @@ format-underline = #999999
 type = internal/network
 interface = wlan0
 interval = 3
-
 format-connected = <label-connected> 
-
 label-connected = ""
 label-disconnected = "OFFLINE"
 label-disconnected-foreground = ${colors.red}
@@ -162,30 +156,31 @@ label-disconnected-foreground = ${colors.red}
 [module/date]
 type = internal/date
 interval = 1
-
 time = "%A %B %d - %H:%M"
 label =  %time%
 
 [module/volume]
 type = internal/pulseaudio
-
 format-volume = <ramp-volume><label-volume>
 format-muted = <label-muted>
 label-volume = %percentage%
-label-muted =   muted
+label-muted =  muted
 label-muted-foreground = #aaa
-format-volume-padding = 0
-format-muted-padding = 0
-
 ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
-ramp-headphones-0 = 
-format-underline = ${colors.red}
 
 [module/spotify]
 type = custom/script
 interval = 1
-;format-prefix = " "
+format-prefix = " "
 format = <label>
-exec = python /home/elso/bin/spotify_status.py -f '{artist} - {song}'
+exec = python /home/elso/bin/spotify_status.py -q -f '{song}'
+
+[module/mullvad]
+type = custom/script
+exec = $HOME/bin/mullvad_module.sh
+click-left = $HOME/bin/mullvad_module.sh --toggle-connection &
+click-right = $HOME/bin/mullvad_module.sh --location-menu &
+interval = 5
+format =  
