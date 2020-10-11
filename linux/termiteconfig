@@ -20,12 +20,11 @@ highlight = #2f2f2f
 foreground      = #f8f8f2
 foreground_bold = #f8f8f2
 cursor          = #f8f8f2
-# Sometimes I want transparency
-background      = rgba(40, 42, 54, 0.8)
+background      = rgba(40, 42, 54, 1)
 
 # black
 color0  = #000000
-color8  = #686868
+color8  = #4d4d4d
 
 # red
 color1  = #ff5555
@@ -54,3 +53,4 @@ color14 = #9aedfe
 # white
 color7  = #bfbfbf
 color15 = #e6e6e6
+

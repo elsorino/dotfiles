@@ -1,4 +1,4 @@
-#!/bin/sh 
+#!/bin/bash
 tmux new-session \; \
   split-window -v \; \
   split-window -h \; \
