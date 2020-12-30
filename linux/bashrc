@@ -284,7 +284,9 @@ export DEVKITPRO=/opt/devkitpro
 export DEVKITARM=/opt/devkitpro/devkitARM
 export DEVKITPPC=/opt/devkitpro/devkitPPC
 
-
+export PATH="/home/elso/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 # Enable aliases to be sudo’ed
 alias sudo="sudo "
@@ -294,4 +296,6 @@ alias vpn="mullvad connect"
 alias vpnd="mullvad disconnect"
 alias yayu="yay --devel -Syuu"
 alias wget="curl -O "
+alias cp="cp -r"
 alias sp="systemctl --user restart spotifyd"
+alias gits="trezor-agent ~/.ssh/github.pub -v --shell"

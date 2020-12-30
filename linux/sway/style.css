@@ -1,0 +1,74 @@
+@import 'dracula.css';
+
+* {
+	border: none;
+	border-radius: 0px;
+	font-family: 'Hack Nerd Font';
+	font-size: 16px;
+	min-height: 0;
+}
+
+#window {
+	padding: 0px 10px;
+	background: @background;
+}
+
+window#waybar {
+	background: @background;
+	color: @foreground;
+}
+
+window#waybar.hidden {
+	opacity: 0.2;
+}
+
+window#waybar.empty {
+	background: @background;
+}
+window#waybar.solo {
+	background: @background;
+}
+
+#workspaces button {
+	padding: 0px 8px;
+	background: @background;
+	color: @foreground;
+}
+
+#workspaces button.focused {
+	color: @green;
+}
+
+#workspaces button.urgent {
+	background: @background;
+	color: @red;
+}
+
+#clock, #network, #tray {
+	padding: 0 7px;
+	color: @foreground;
+	background-color: @background;
+}
+#pulseaudio {
+	padding: 0 5px;
+}
+
+@keyframes blink{
+	to {
+		color: @foreground;
+	}
+}
+
+label:focus {
+	background-color: @selection;
+}
+
+#network.disconnected {
+	margin: 0px;
+	padding: 0px;
+}
+
+#pulseaudio.muted {
+	margin: 0px;
+	padding: 0px;
+}
