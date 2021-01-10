@@ -228,7 +228,7 @@ sexy_bash_prompt_get_git_info () {
 }
 
 # Show the prompt
-PS1="\[$sexy_bash_prompt_reset\]\
+PS1="\h\[$sexy_bash_prompt_reset\]\
 \[$sexy_bash_prompt_dir_color\]\w\[$sexy_bash_prompt_reset\]\
 \$( sexy_bash_prompt_is_on_git && \
   echo -n \"\[$sexy_bash_prompt_git_status_color\] \$(sexy_bash_prompt_get_git_info)\" && \
@@ -279,7 +279,7 @@ PATH='/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
 export VITASDK=/usr/local/vitasdk
 export PATH=$VITASDK/bin:$PATH # add vitasdk tool to $PATH
 export EDITOR='micro'
-export QT_QPA_PLATFORMTHEME=gtk2 #Consistent look between GTK and Qt
+QT_STYLE_OVERIDE=GTK+ #Consistent look between GTK and Qt
 export DEVKITPRO=/opt/devkitpro
 export DEVKITARM=/opt/devkitpro/devkitARM
 export DEVKITPPC=/opt/devkitpro/devkitPPC
