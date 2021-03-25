@@ -106,16 +106,19 @@ bindsym $mod+Shift+9 move container to workspace $w9
 bindsym $mod+Shift+0 move container to workspace $w10
 
 #workspace assignments
-assign [class="firefox"] $w2
-assign [instance="discord"] $w3
+#assign [class="firefox"] $w2
+assign [class="discord"] $w3
 assign [class="^Steam*"] $w4
 assign [class="hl2_linux"] $w4
+assign [class="eu4"] $w4
+assign [class="hoi4"] $w4
 assign [class="steam_app_438100"] $w4
 assign [class="steam_app_774171"] $w4
 
 #Floating windows
 for_window [app_id="imv"] floating enable
 for_window [class="^Steam*"] floating enable
+for_window [class="MEGAsync"] floating enable
 for_window [class="hl2_linux"] fullscreen
 for_window [class="steam_app_438100"] fullscreen
 for_window [class="steam_app_774171"] fullscreen
