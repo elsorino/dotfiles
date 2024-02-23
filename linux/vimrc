@@ -1,0 +1,17 @@
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
+
+cmap w!! w !sudo tee > /dev/null %
+
+map <F8> : !gcc % && ./a.out <CR>
+
+syntax on
+filetype indent on
+
+set ts=4 sw=4
+set number

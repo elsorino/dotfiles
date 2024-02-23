@@ -276,84 +276,14 @@ PATH='/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
 [ -d ~/go/bin ] && _prepend_path "$HOME/go/bin"
 [ -d ~/.local/bin ] && _prepend_path "$HOME/.local/bin"
 
-export EDITOR='micro'
+export EDITOR='vim'
 export QT_QPA_PLATFORMTHEME=gtk2
-export DEVKITPRO=/opt/devkitpro
-export DEVKITARM=/opt/devkitpro/devkitARM
-export DEVKITPPC=/opt/devkitpro/devkitPPC
-export PATH=$VITASDK/bin:$PATH # add vitasdk tool to $PATH
-export VITASDK=/usr/local/vitasdk
-export ANDROID_SDK_ROOT=/opt/android-sdk
-export PATH="/home/elso/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 
-# Enable aliases to be sudo’ed
+#I have wayland issues without these options, probably because of Nvidia
+alias sway="sway --unsupported-gpu"
+export WLR_NO_HARDWARE_CURSORS=1
+
 alias sudo="sudo "
 alias juser="journalctl --user-unit"
-#alias ls="exa --icons"
-alias vpn="mullvad connect"
-alias vpnd="mullvad disconnect"
 alias yayu="yay --devel -Syuu"
 alias cp="cp -r"
-alias sp="systemctl --user restart spotifyd"
-alias gits="trezor-agent ~/.ssh/github.pub -v --shell"
-alias ssht="trezor-agent -c"
-alias spotify="LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify"
-
-video-url-from-tweet() {
-    if [ "$1" ]; then
-        url=$1
-    else
-        echo "Must provide a url"
-        return 1
-    fi
-
-    curl --silent $url |\
-        # should find the <meta> tag with content="<thumbnail url>"
-        (grep -m1 "tweet_video_thumb" ||\
-          echo "Could not find video" && return 1) |\
-
-        # from: <meta property="og:image" content="https://pbs.twimg.com/tweet_video_thumb/xxxxxxxxxx.jpg">
-        # to: https://pbs.twimg.com/tweet_video_thumb/xxxxxxxxxx.jpg
-        cut -d '"' -f 4 |\
-
-        # from: https://pbs.twimg.com/tweet_video_thumb/xxxxxxxxxx.jpg
-        # to: https://video.twimg.com/tweet_video/xxxxxxxxxx.mp4
-        sed 's/.jpg/.mp4/g' |\
-        sed 's/pbs.twimg.com\/tweet_video_thumb/video.twimg.com\/tweet_video/g'
-}
-video-from-tweet() {
-    if [ "$1" ]; then
-        url=$1
-    else
-        echo "Must provide a url"
-        return 1
-    fi
-    curl $(video-url-from-tweet $url)
-}
-video-to-gif() {
-    # derived from https://engineering.giphy.com/how-to-make-gifs-with-ffmpeg/
-    if [ "$2" ]; then
-        input=$1
-        output=$2
-    else
-        echo "Must provide an input file and output file"
-        return 1
-    fi
-
-    ffmpeg -i $input \
-           -filter_complex "[0:v] split [a][b];[a] palettegen [p];[b][p] paletteuse" \
-           -f gif \
-           $output
-}
-gif-from-tweet() {
-    if [ "$2" ]; then
-        url=$1
-        output=$2
-    else
-        echo "Must provide a url and an output filename"
-        return 1
-    fi
-    video-from-tweet $url | video-to-gif - $output
-}
