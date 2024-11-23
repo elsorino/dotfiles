@@ -5,4 +5,4 @@ tmux new-session \; \
   send-keys 'htop' C-m \; \
   select-pane -t 0 \; \
   split-window -h \; \
-  send-keys 'neofetch' C-m \;
+  send-keys 'fastfetch' C-m \;
