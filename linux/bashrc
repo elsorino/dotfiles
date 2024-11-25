@@ -275,15 +275,17 @@ PATH='/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
 [ -d ~/bin ] && _prepend_path "$HOME/bin"
 [ -d ~/go/bin ] && _prepend_path "$HOME/go/bin"
 [ -d ~/.local/bin ] && _prepend_path "$HOME/.local/bin"
+[ -d ~/.spicetify ] && _prepend_path "$HOME/.spicetify"
+
+#In my experience, this makes fonts look substantally better. Supposed to go in /etc/environment
+FREETYPE_PROPERTIES="cff:no-stem-darkening=0 autofitter:no-stem-darkening=0"
 
 export EDITOR='vim'
-export QT_QPA_PLATFORMTHEME=gtk2
 
 #I have wayland issues without these options, probably because of Nvidia
-alias sway="sway --unsupported-gpu"
 export WLR_NO_HARDWARE_CURSORS=1
+export WLR_RENDERER=""vulkan""
 
 alias sudo="sudo "
-alias juser="journalctl --user-unit"
-alias yayu="yay --devel -Syuu"
+alias sway="sway --unsupported-gpu"
 alias cp="cp -r"

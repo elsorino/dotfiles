@@ -1,0 +1,15 @@
+@import "macchiato.css";
+
+* {
+  /* reference the color by using @color-name */
+  color: @text;
+}
+
+window#waybar {
+  /* you can also GTK3 CSS functions! */
+  background-color: shade(@base, 1);
+}
+
+#workspaces button.focused {
+	background-color: @crust;
+}

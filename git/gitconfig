@@ -1,6 +1,6 @@
 [user]
 	name = elsorino
-	email = elso@pm.me
+	email = elso@protonmail.com
 [core]
 	excludesfile = ~/.gitignore_global
 	autocrlf = input

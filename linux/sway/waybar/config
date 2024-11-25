@@ -1,16 +1,16 @@
 {
     // "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 30, // Waybar height (to be removed for auto height)
+    // "height": 30, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
-    "spacing": 0, // Gaps between modules (4px)
+    "spacing": 5, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/window"],
-    "modules-center": ["clock"],
-    "modules-right": [ "network", "pulseaudio", "tray"],
+    "modules-center": ["custom/media"],
+    "modules-right": [ "pulseaudio", "clock", "tray"],
     // Modules configuration
      "sway/workspaces": {
-         "disable-scroll": true,
+         "disable-scroll": false,
          "all-outputs": false,
          "warp-on-scroll": false,
          "format": "{icon}",
@@ -20,7 +20,7 @@
   
     "tray": {
         // "icon-size": 21,
-        "spacing": 10
+        "spacing": 5
     },
     "clock": {
         // "timezone": "America/New_York",
@@ -69,17 +69,13 @@
         },
         "on-click": "pavucontrol"
     },
-    "custom/media": {
-        "format": "{icon} {}",
-        "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-    }
+"custom/media": {
+    "exec": "/usr/bin/python3 ~/.config/waybar/mediaplayer.py --player spotify",
+    "format": "{}  ",
+    "return-type": "json",
+    "on-click": "playerctl play-pause",
+    "on-scroll-up": "playerctl next",
+    "on-scroll-down": "playerctl previous"
+},
 }
 
