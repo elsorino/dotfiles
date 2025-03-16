@@ -284,8 +284,17 @@ export EDITOR='vim'
 
 #I have wayland issues without these options, probably because of Nvidia
 export WLR_NO_HARDWARE_CURSORS=1
-export WLR_RENDERER=""vulkan""
+export WLR_RENDERER="vulkan"
 
 alias sudo="sudo "
 alias sway="sway --unsupported-gpu"
 alias cp="cp -r"
+alias yayu="yay --devel -Syuu"
+alias discord="vesktop --ozone-platform-hint=auto"
+
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - bash)"
+
+export GNUPGHOME=~/.gnupg/trezor

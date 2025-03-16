@@ -5,11 +5,37 @@
   color: @text;
 }
 
-window#waybar {
-  /* you can also GTK3 CSS functions! */
-  background-color: shade(@base, 1);
+#waybar {
+  background: transparent;
+  color: @text;
 }
 
-#workspaces button.focused {
+.left {
+   font-size: 15px;	
+} 
+
+.right { 
+	font-size: 13px;
+}
+
+ #workspaces button.focused {
 	background-color: @crust;
 }
+
+#custom-music,
+#tray,
+#backlight,
+#clock,
+#battery,
+#pulseaudio,
+#custom-lock,
+#custom-power,
+#custom-media,
+#workspaces, 
+#window
+ {
+  background-color: @surface0;
+  padding: 0px 15px;
+  border-radius: 5rem;
+}
+
