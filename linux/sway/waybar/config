@@ -2,16 +2,18 @@
 	"name": "right",
 	"output": "HDMI-A-1",
     // "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "position": "top", // Waybar position (top|bottom|left|right)
     "height": 1, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
-    "spacing": 5, // Gaps between modules (4px)
-	"margin-top": 3,
-	"margin-bottom": -5,
+    "spacing": 0, // Gaps between modules (4px)
+	"margin-top": 0,
+	"margin-bottom": 0,
+	"margin-left": 0,
+	"margin-right": 0,
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces"],
-    "modules-center": ["custom/media"],
-    "modules-right": [ "pulseaudio", "clock", "tray"],
+    "modules-left": ["sway/workspaces", "sway/window"],
+    "modules-center": ["mpris"],
+    "modules-right": [ "clock", "tray"],
     // Modules configuration
      "sway/workspaces": {
          "disable-scroll": false,
@@ -23,7 +25,7 @@
      },
   
     "tray": {
-        // "icon-size": 21,
+        //"icon-size": 15,
         "spacing": 5
     },
     "clock": {
@@ -71,31 +73,37 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol"
-    },
-"custom/media": {
-    "exec": "/usr/bin/python3 ~/.config/waybar/mediaplayer.py --player spotify",
-    "format": "{}  ",
-    "return-type": "json",
-    "on-click": "playerctl play-pause",
-    "on-scroll-up": "playerctl next",
-    "on-scroll-down": "playerctl previous"
-},
+        "on-click": "pavucontrol"},
+	"mpris": {
+		"format": " {player_icon} {artist} - {title} {position}/{length}",
+		"format-paused": " {status_icon} {artist} - {title} {position}/{length}",
+		"interval": 1,
+		"player-icons": {
+			"default": "▶",
+			"mpv": "🎵"
+		},
+	"status-icons": {
+		"paused": "⏸"
+	},
+	// "ignored-players": ["firefox"]
+}
 },
 {	
 	"output": "DP-3",
 	"name": "left",
     // "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "position": "top", // Waybar position (top|bottom|left|right)
     // "height": 30, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
-	"margin-top": 5,
-	"margin-bottom": -5,
-    "spacing": 5, // Gaps between modules (4px)
+	"margin-top": 0,
+	"margin-bottom": 0,
+	"margin-left": 0,
+	"margin-right": 0,
+    "spacing": 0, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces"],
-    "modules-center": ["custom/media"],
-    "modules-right": [ "pulseaudio", "clock", "tray"],
+    "modules-left": ["sway/workspaces", "sway/window"],
+    "modules-center": ["mpris"],
+    "modules-right": [ "clock", "tray"],
     // Modules configuration
      "sway/workspaces": {
          "disable-scroll": false,
@@ -157,13 +165,19 @@
         },
         "on-click": "pavucontrol"
     },
-"custom/media": {
-    "exec": "/usr/bin/python3 ~/.config/waybar/mediaplayer.py --player spotify",
-    "format": "{}  ",
-    "return-type": "json",
-    "on-click": "playerctl play-pause",
-    "on-scroll-up": "playerctl next",
-    "on-scroll-down": "playerctl previous"
-},
+
+	"mpris": {
+		"format": " {player_icon} {artist} - {title} {position}/{length}",
+		"format-paused": " {status_icon} {artist} - {title} {position}/{length}",
+		"interval": 1,
+		"player-icons": {
+			"default": "▶",
+			"mpv": "🎵"
+		},
+	"status-icons": {
+		"paused": "⏸"
+	},
+	// "ignored-players": ["firefox"]
+	},
 }
 ]

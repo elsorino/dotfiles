@@ -288,13 +288,12 @@ export WLR_RENDERER="vulkan"
 
 alias sudo="sudo "
 alias sway="sway --unsupported-gpu"
-alias cp="cp -r"
 alias yayu="yay --devel -Syuu"
 alias discord="vesktop --ozone-platform-hint=auto"
+alias mpvm="mpv --no-video"
 
-
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - bash)"
+#export PYENV_ROOT="$HOME/.pyenv"
+#[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+#eval "$(pyenv init - bash)"
 
 export GNUPGHOME=~/.gnupg/trezor
