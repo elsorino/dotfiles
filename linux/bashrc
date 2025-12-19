@@ -275,6 +275,7 @@ PATH='/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
 [ -d ~/bin ] && _prepend_path "$HOME/bin"
 [ -d ~/go/bin ] && _prepend_path "$HOME/go/bin"
 [ -d ~/.local/bin ] && _prepend_path "$HOME/.local/bin"
+[ -d ~/.cargo/bin ] && _prepend_path "$HOME.cargo/bin"
 [ -d ~/.spicetify ] && _prepend_path "$HOME/.spicetify"
 
 #In my experience, this makes fonts look substantally better. Supposed to go in /etc/environment
@@ -283,17 +284,18 @@ FREETYPE_PROPERTIES="cff:no-stem-darkening=0 autofitter:no-stem-darkening=0"
 export EDITOR='vim'
 
 #I have wayland issues without these options, probably because of Nvidia
-export WLR_NO_HARDWARE_CURSORS=1
+#export WLR_NO_HARDWARE_CURSORS=1
 export WLR_RENDERER="vulkan"
 
 alias sudo="sudo "
-alias sway="sway --unsupported-gpu"
+alias sway="dbus-run-session sway --unsupported-gpu"
 alias yayu="yay --devel -Syuu"
-alias discord="vesktop --ozone-platform-hint=auto"
+alias gendate="sudo emaint -a sync; sudo emerge -avuDN @world"
+alias discord="vesktop-bin --ozone-platform-hint=auto"
 alias mpvm="mpv --no-video"
 
 #export PYENV_ROOT="$HOME/.pyenv"
 #[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 #eval "$(pyenv init - bash)"
-
+export GTK_USE_PORTAL=1
 export GNUPGHOME=~/.gnupg/trezor

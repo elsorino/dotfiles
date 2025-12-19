@@ -5,6 +5,10 @@
 # Read `man 5 sway` for a complete reference.
 
 include catppuccin-macchiato
+
+exec --no-startup-id systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec --no-startup-id dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -15,7 +19,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term alacritty
+set $term kitty 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -31,8 +35,8 @@ set $menu rofi -show drun
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 output DP-3 mode 2560x1440@164.999Hz pos 0,0 
 output HDMI-A-1 pos 2560,200
-output DP-3 color_profile icc ~/.config/sway/1440p.icm
-output HDMI-A-1 color_profile icc ~/.config/sway/43.icm
+#output DP-3 color_profile icc ~/.config/sway/1440p.icm
+#output HDMI-A-1 color_profile icc ~/.config/sway/43.icm
 ### Idle configuration
 #
 # Example configuration:
@@ -205,48 +209,53 @@ tiling_drag enable
 #
 # Read `man 5 sway-bar` for more information about this section.
 # target                 title     bg    text   indicator  border
-client.focused           $lavender $base $text  $rosewater $lavender
-client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
-client.unfocused         $overlay0 $base $text  $rosewater $overlay0
-client.urgent            $peach    $base $peach $overlay0  $peach
-client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
-client.background        $base
+#client.focused           $lavender $base $text  $rosewater $lavender
+#client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
+#client.unfocused         $overlay0 $base $text  $rosewater $overlay0
+#client.urgent            $peach    $base $peach $overlay0  $peach
+#client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+#client.background        $base
 
 default_border none
 default_floating_border none
 titlebar_padding 1
 titlebar_border_thickness 0
 
+
 bar swaybar_command waybar
 
-exec nm-applet
-exec protonvpn-app
-exec udiskie --tray
-include /etc/sway/config.d/*
+#exec nm-applet
+#exec protonvpn-app
+#exec udiskie --tray
 
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +2%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -2%
+#bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +2%
+#bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -2%
 
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPause exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-bindsym Print exec ~/bin/screenshot.sh
+bindsym Print exec IMG=~/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png && grim -g "$(slurp)" $IMG && wl-copy < $IMG
 
 
-exec_always swaybg --output DP-3 -i ~/4k-wallpaper.jpg --mode fill
-exec_always swaybg --output HDMI-A-1 -i ~/1080p-wallpaper.png
+exec_always swaybg --output DP-3 -i ~/1440p.jpg --mode fill
+exec_always swaybg --output HDMI-A-1 -i ~/43.jpg
 for_window [class="steam"] floating enable
 for_window [class="tf_linux64"] floating enable
 assign [class="steam"] 3
 assign [class="tf_linux64"] 3
-exec_always $HOME/bin/primon.sh
+#exec_always $HOME/bin/primon.sh
+
+exec_always /usr/libexec/pam_kwallet_init
+exec_always kwalletd6
+exec mpd-mpris
+
 
 #gaps config
-#gaps inner 10
+gaps inner 10
 
 bindsym $mod+plus  gaps inner current plus 5
 bindsym $mod+minus gaps inner current minus 5
@@ -255,8 +264,18 @@ bindsym $mod+Shift+minus gaps outer current minus 5
 
 #swayfx options
 
-blur enable
-blur_radius 3
+#blur enable
+#blur_radius 5
 
-shadows disable
-shadow_color #FFFFFFAA
+#shadows enable
+#shadow_color #FFFFFFAA
+#shadow_blur_radius 10
+
+#corner_radius 5
+
+#!/bin/sh
+
+# usage: import-gsettings
+
+
+#include /etc/sway/config.d/*
