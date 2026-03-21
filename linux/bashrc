@@ -7,6 +7,12 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+if [ -f /etc/bash.bashrc ]; then
+    source /etc/bash.bashrc
+elif [ -f /etc/profile ]; then
+    source /etc/profile
+fi
+
 # Inspired by: https://github.com/DFurnes/purer & https://github.com/twolfson/sexy-bash-prompt
 
 # Sexy bash prompt by twolfson
@@ -260,23 +266,10 @@ PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; h
 
 
 # Construct $PATH
-function _prepend_path() {
-	if ! $( echo "$PATH" | tr ":" "\n" | grep -qx "$1" ) ; then
-		PATH="$1:$PATH"
-	fi
-}
+
 
 #Sets path
-PATH='/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin'
-[ -d /usr/local/bin ] && _prepend_path "/usr/local/bin"
-[ -d /usr/local/heroku/bin ] && _prepend_path "/usr/local/heroku/bin"
-[ -d /usr/local/opt/ruby/bin ] && _prepend_path "/usr/local/opt/ruby/bin"
-[ -d /usr/local/share/npm/bin ] && _prepend_path "/usr/local/share/npm/bin"
-[ -d ~/bin ] && _prepend_path "$HOME/bin"
-[ -d ~/go/bin ] && _prepend_path "$HOME/go/bin"
-[ -d ~/.local/bin ] && _prepend_path "$HOME/.local/bin"
-[ -d ~/.cargo/bin ] && _prepend_path "$HOME.cargo/bin"
-[ -d ~/.spicetify ] && _prepend_path "$HOME/.spicetify"
+export PATH="$PATH:$HOME/bin:$HOME/.cargo/bin:$HOME/.local/bin"
 
 #In my experience, this makes fonts look substantally better. Supposed to go in /etc/environment
 FREETYPE_PROPERTIES="cff:no-stem-darkening=0 autofitter:no-stem-darkening=0"
@@ -294,8 +287,8 @@ alias gendate="sudo emaint -a sync; sudo emerge -avuDN @world"
 alias discord="vesktop-bin --ozone-platform-hint=auto"
 alias mpvm="mpv --no-video"
 
-#export PYENV_ROOT="$HOME/.pyenv"
-#[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-#eval "$(pyenv init - bash)"
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - bash)"
 export GTK_USE_PORTAL=1
 export GNUPGHOME=~/.gnupg/trezor

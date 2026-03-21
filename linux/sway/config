@@ -19,7 +19,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term kitty 
+set $term kitty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -243,24 +243,24 @@ bindsym Print exec IMG=~/Pictures/$(date +%Y-%m-%d_%H-%m-%s).png && grim -g "$(s
 
 exec_always swaybg --output DP-3 -i ~/1440p.jpg --mode fill
 exec_always swaybg --output HDMI-A-1 -i ~/43.jpg
+
 for_window [class="steam"] floating enable
 for_window [class="tf_linux64"] floating enable
+for_window [app_id="org.keepassxc.KeePassXC"] floating enable
 assign [class="steam"] 3
 assign [class="tf_linux64"] 3
-#exec_always $HOME/bin/primon.sh
 
-exec_always /usr/libexec/pam_kwallet_init
-exec_always kwalletd6
+exec swaymsg "workspace 1; exec librewolf"
+exec swaymsg "workspace 2; exec kitty"
 exec mpd-mpris
 
+# Gaps config
+#gaps inner 10
 
-#gaps config
-gaps inner 10
-
-bindsym $mod+plus  gaps inner current plus 5
-bindsym $mod+minus gaps inner current minus 5
-bindsym $mod+Shift+plus gaps outer current plus 5
-bindsym $mod+Shift+minus gaps outer current minus 5
+#bindsym $mod+plus  gaps inner current plus 5
+#bindsym $mod+minus gaps inner current minus 5
+#bindsym $mod+Shift+plus gaps outer current plus 5
+#bindsym $mod+Shift+minus gaps outer current minus 5
 
 #swayfx options
 

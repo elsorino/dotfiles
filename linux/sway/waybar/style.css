@@ -10,15 +10,14 @@
   margin: -1.5 
 } */
 
-window#waybar {
-	border-radius: 5000rem;
+/*window#waybar {
 	background-color: alpha(@background, 0.9);
 }
 
 #waybar {
   color: @background;
 	background-color: alpha(@background, 0.9);
-}
+}*/
 
 
 .modules-left {
